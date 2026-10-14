@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f1e8">
+  <meta name="description" content="Unmind with Me — a gentle space to understand yourself, build self-worth, and explore emotional wellbeing with Pavithra Jayanthi.">
+  <title>Unmind with Me | Pavithra Jayanthi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #f7f1e8;
+      --paper: #fffdf9;
+      --ink: #263126;
+      --muted: #65695c;
+      --olive: #596348;
+      --olive-dark: #394531;
+      --terracotta: #ae7558;
+      --rose: #edd1c2;
+      --gold: #d5a65f;
+      --line: rgba(57,69,49,.16);
+      --shadow: 0 22px 70px rgba(63, 51, 34, .11);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--sans); line-height: 1.65; overflow-x: hidden; }
+    body::selection { background: var(--rose); color: var(--ink); }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--olive); font-weight: 700; text-transform: uppercase; font-size: .72rem; letter-spacing: .17em; }
+    .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-weight: 500; line-height: 1.12; }
+    h1, h2 { font-family: var(--serif); }
+    h1 { font-size: clamp(3.25rem, 6.5vw, 6.2rem); letter-spacing: -.055em; margin: 20px 0 24px; max-width: 680px; }
+    h1 em, h2 em { color: var(--terracotta); font-weight: 500; }
+    h2 { font-size: clamp(2.35rem, 4.2vw, 4rem); letter-spacing: -.04em; margin-bottom: 20px; }
+    h3 { font-family: var(--serif); font-size: 1.45rem; margin-bottom: 12px; }
+    p { color: var(--muted); }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 10px; border: 1px solid transparent; min-height: 52px; padding: 14px 23px; border-radius: 999px; font-weight: 700; font-size: .91rem; cursor: pointer; transition: transform .25s ease, box-shadow .25s ease, background .25s ease; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary { color: #fffdf9; background: var(--olive-dark); box-shadow: 0 9px 24px rgba(57,69,49,.17); }
+    .btn-primary:hover { background: #2c3627; box-shadow: 0 13px 28px rgba(57,69,49,.24); }
+    .btn-secondary { border-color: rgba(57,69,49,.25); color: var(--olive-dark); background: rgba(255,253,249,.46); }
+    .btn-secondary:hover { background: var(--paper); }
+    .arrow { font-size: 1.1rem; transition: transform .25s ease; }
+    .btn:hover .arrow { transform: translateX(3px); }
+
+    /* Navigation */
+    .site-header { position: sticky; z-index: 20; top: 0; background: rgba(247,241,232,.88); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(57,69,49,.08); }
+    .nav { height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; flex-shrink: 0; }
+    .brand-mark { width: 42px; height: 42px; border: 1px solid var(--gold); border-radius: 50%; display: grid; place-items: center; color: var(--olive); background: var(--paper); }
+    .brand-mark svg { width: 26px; height: 26px; }
+    .brand-word { font-family: var(--serif); font-size: 1.33rem; letter-spacing: -.04em; line-height: 1.05; }
+    .brand-word span { display: block; font-family: var(--sans); font-size: .67rem; letter-spacing: .12em; color: var(--terracotta); margin-top: 4px; }
+    .nav-links { display: flex; align-items: center; gap: 29px; }
+    .nav-links > a:not(.btn) { color: #51574b; font-size: .88rem; font-weight: 600; transition: color .2s; }
+    .nav-links > a:not(.btn):hover { color: var(--terracotta); }
+    .nav-links .btn { min-height: 44px; padding: 10px 18px; }
+    .menu-toggle { display: none; border: 0; background: transparent; color: var(--ink); font-size: 1.65rem; cursor: pointer; }
+
+    /* Hero */
+    .hero { min-height: 690px; padding: 68px 0 76px; position: relative; isolation: isolate; }
+    .hero::before { content: ''; position: absolute; width: 560px; height: 560px; border-radius: 50%; right: -220px; top: -145px; border: 1px solid rgba(213,166,95,.38); z-index: -1; }
+    .hero::after { content: ''; position: absolute; width: 420px; height: 420px; border-radius: 50%; right: -140px; top: -75px; border: 1px solid rgba(213,166,95,.25); z-index: -1; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 42px; }
+    .hero-copy { padding: 18px 0 32px; animation: rise-in .8s both; }
+    .hero-copy .intro { font-size: 1.08rem; max-width: 500px; margin-bottom: 28px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .micro-note { display: flex; align-items: center; gap: 10px; margin-top: 28px; font-size: .79rem; color: var(--muted); }
+    .micro-note .dot { width: 7px; height: 7px; background: var(--terracotta); border-radius: 50%; box-shadow: 0 0 0 5px rgba(174,117,88,.12); }
+    .hero-art { position: relative; padding: 10px; animation: float-in 1s .12s both; }
+    .hero-art::before { content: ''; position: absolute; inset: 0; border: 1px solid var(--gold); border-radius: 48% 48% 44% 44% / 42% 42% 45% 45%; transform: rotate(3deg); }
+    .hero-art::after { content: '✳'; position: absolute; top: 5%; right: -3%; font-size: 2.4rem; color: var(--terracotta); animation: slow-spin 18s linear infinite; }
+    .hero-image-frame { position: relative; overflow: hidden; border-radius: 48% 48% 44% 44% / 42% 42% 45% 45%; box-shadow: var(--shadow); background: #e8d9c8; }
+    .hero-image-frame img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+    .hero-art:hover .hero-image-frame img { transform: scale(1.035); }
+    .floating-note { position: absolute; bottom: 10%; left: -48px; max-width: 210px; padding: 17px 20px; background: rgba(255,253,249,.94); border: 1px solid rgba(213,166,95,.55); border-radius: 17px; box-shadow: 0 15px 38px rgba(63,51,34,.12); animation: bob 5s ease-in-out infinite; }
+    .floating-note strong { display: block; font-family: var(--serif); font-size: 1.08rem; line-height: 1.3; font-weight: 500; }
+    .floating-note span { display: block; margin-top: 5px; font-size: .73rem; color: var(--muted); }
+    .leaf { position: absolute; z-index: -1; color: rgba(89,99,72,.23); font-size: 5rem; transform: rotate(-28deg); user-select: none; }
+    .leaf-one { left: -28px; top: 54%; animation: sway 7s ease-in-out infinite; }
+    .leaf-two { right: 10%; bottom: -55px; font-size: 3.7rem; animation: sway 8s ease-in-out infinite reverse; }
+
+    /* Intro ribbon */
+    .belief { background: var(--olive-dark); color: #fffaf1; padding: 22px 0; overflow: hidden; }
+    .belief-track { display: flex; align-items: center; justify-content: space-between; gap: 22px; white-space: nowrap; }
+    .belief-item { display: inline-flex; align-items: center; gap: 17px; font-family: var(--serif); font-size: 1.16rem; }
+    .belief-item span { color: var(--gold); font-size: 1.1rem; }
+
+    section.content-section { padding: 112px 0; }
+    .section-head { max-width: 690px; margin-bottom: 42px; }
+    .section-head.center { margin-inline: auto; text-align: center; }
+    .section-head.center .eyebrow { justify-content: center; }
+    .section-head p { max-width: 570px; font-size: 1.02rem; }
+    .section-head.center p { margin-inline: auto; }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: .87fr 1.13fr; gap: 90px; align-items: center; }
+    .about-visual { min-height: 430px; position: relative; display: grid; place-items: center; }
+    .about-circle { width: min(100%, 395px); aspect-ratio: 1; border-radius: 50%; background: #e9d8c5; position: relative; display: grid; place-items: center; overflow: hidden; }
+    .about-circle::before, .about-circle::after { content: ''; position: absolute; border: 1px solid var(--gold); border-radius: 50%; inset: 13px; }
+    .about-circle::after { inset: 26px; border-color: rgba(89,99,72,.28); }
+    .about-symbol { position: relative; z-index: 1; color: var(--olive); width: 58%; height: 58%; }
+    .about-stamp { position: absolute; bottom: 16px; right: 0; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px 22px; box-shadow: var(--shadow); transform: rotate(3deg); }
+    .about-stamp strong { display: block; font-family: var(--serif); font-size: 1.2rem; font-weight: 500; }
+    .about-stamp small { color: var(--muted); }
+    .about-copy p { max-width: 620px; }
+    .signature { margin-top: 30px; display: flex; align-items: center; gap: 14px; }
+    .signature-line { width: 45px; height: 1px; background: var(--gold); }
+    .signature strong { font-family: var(--serif); font-weight: 500; font-size: 1.18rem; }
+    .signature span { display: block; font-size: .78rem; color: var(--muted); }
+
+    /* Support cards */
+    .support { background: rgba(255,253,249,.62); border-block: 1px solid rgba(57,69,49,.08); }
+    .support-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .support-card { border: 1px solid var(--line); background: var(--paper); border-radius: 22px; padding: 29px 27px 28px; min-height: 260px; transition: transform .3s, box-shadow .3s, border-color .3s; }
+    .support-card:hover { transform: translateY(-7px); border-color: rgba(213,166,95,.75); box-shadow: 0 18px 45px rgba(63,51,34,.08); }
+    .support-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; color: var(--olive); background: #eee8da; margin-bottom: 23px; }
+    .support-icon svg { width: 25px; height: 25px; }
+    .support-card p { font-size: .92rem; margin-bottom: 0; }
+    .soft-note { margin-top: 24px; padding: 18px 22px; border-left: 2px solid var(--gold); background: rgba(237,209,194,.2); color: #68695e; font-size: .86rem; }
+
+    /* Approach */
+    .approach-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 85px; align-items: start; }
+    .approach-intro { position: sticky; top: 120px; }
+    .steps { border-top: 1px solid var(--line); }
+    .step { display: grid; grid-template-columns: 58px 1fr; gap: 20px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .step-num { width: 43px; height: 43px; display: grid; place-items: center; border: 1px solid rgba(213,166,95,.8); border-radius: 50%; color: var(--terracotta); font-family: var(--serif); font-size: 1.1rem; }
+    .step p { margin: 0; max-width: 600px; }
+    .step h3 { margin-bottom: 8px; }
+
+    /* CTA */
+    .quote-section { padding: 0 0 105px; }
+    .quote-panel { position: relative; overflow: hidden; border-radius: 30px; padding: 65px 50px; background: #e8d9c7; text-align: center; isolation: isolate; }
+    .quote-panel::before, .quote-panel::after { content: ''; position: absolute; z-index: -1; border: 1px solid rgba(174,117,88,.38); border-radius: 50%; width: 340px; height: 340px; top: -180px; left: -90px; }
+    .quote-panel::after { width: 260px; height: 260px; top: auto; bottom: -170px; left: auto; right: -25px; }
+    .quote-mark { font-family: var(--serif); color: var(--terracotta); font-size: 4rem; line-height: .8; }
+    .quote-panel h2 { max-width: 710px; margin: 18px auto 18px; }
+    .quote-panel p { max-width: 550px; margin: 0 auto 25px; }
+
+    /* Forms */
+    .booking { background: var(--olive-dark); color: #fffaf1; }
+    .booking h2, .booking h3 { color: #fffaf1; }
+    .booking .eyebrow { color: #e3c08a; }
+    .booking .section-head p, .booking p { color: rgba(255,250,241,.72); }
+    .booking-grid { display: grid; grid-template-columns: .74fr 1.26fr; gap: 64px; align-items: start; }
+    .booking-info { position: sticky; top: 120px; }
+    .booking-info .detail { display: flex; align-items: flex-start; gap: 12px; margin: 23px 0; color: rgba(255,250,241,.86); font-size: .92rem; }
+    .booking-info .detail-mark { color: var(--gold); font-size: 1.15rem; }
+    .booking-form { background: var(--paper); color: var(--ink); border-radius: 24px; padding: 32px; box-shadow: 0 22px 65px rgba(14,20,12,.19); }
+    .booking-form h3 { color: var(--ink); font-family: var(--serif); font-size: 1.75rem; }
+    .booking-form > p { color: var(--muted); font-size: .86rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    label { font-size: .78rem; font-weight: 700; color: #4d5548; }
+    input, select, textarea { width: 100%; border: 1px solid #e2ddd2; background: #fffefb; border-radius: 11px; outline: 0; color: var(--ink); padding: 13px 14px; transition: border-color .2s, box-shadow .2s; }
+    input, select { min-height: 48px; }
+    textarea { min-height: 105px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(213,166,95,.17); }
+    .form-foot { display: flex; align-items: flex-start; gap: 10px; margin: 15px 0 19px; color: var(--muted); font-size: .75rem; line-height: 1.5; }
+    .form-foot input { width: 16px; min-height: 16px; margin-top: 2px; accent-color: var(--olive); flex: 0 0 auto; }
+    .form-submit { width: 100%; border: 0; }
+    .fine-print { margin-top: 14px; font-size: .72rem; color: var(--muted); }
+
+    .enquiry { background: #fffaf2; }
+    .enquiry-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 75px; align-items: start; }
+    .contact-email { display: inline-flex; align-items: center; gap: 9px; color: var(--olive-dark); border-bottom: 1px solid var(--gold); padding-bottom: 4px; font-weight: 700; }
+    .enquiry-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .enquiry-form .field.full { grid-column: 1 / -1; }
+
+    footer { padding: 34px 0; background: #f0e7d9; }
+    .footer-row { display: flex; justify-content: space-between; gap: 25px; align-items: center; }
+    .footer-brand { font-family: var(--serif); font-size: 1.3rem; }
+    .footer-brand span { font-family: var(--sans); font-size: .72rem; letter-spacing: .1em; color: var(--terracotta); }
+    .footer-right { text-align: right; font-size: .76rem; color: var(--muted); }
+    .footer-right p { margin: 0; font-size: .76rem; }
+    .emergency-note { margin-top: 22px; padding-top: 16px; border-top: 1px solid rgba(57,69,49,.12); text-align: center; font-size: .73rem; color: #767568; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .1s; } .delay-2 { transition-delay: .2s; } .delay-3 { transition-delay: .3s; }
+    @keyframes rise-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes float-in { from { opacity: 0; transform: translateY(20px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes bob { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-9px) rotate(1deg); } }
+    @keyframes slow-spin { to { transform: rotate(360deg); } }
+    @keyframes sway { 0%,100% { transform: rotate(-28deg) translateY(0); } 50% { transform: rotate(-19deg) translateY(-9px); } }
+
+    @media (max-width: 900px) {
+      .nav-links { gap: 17px; }
+      .nav-links > a:not(.btn) { font-size: .82rem; }
+      .hero { padding-top: 40px; min-height: auto; }
+      .hero-grid { gap: 25px; grid-template-columns: 1fr .85fr; }
+      h1 { font-size: clamp(3rem, 7vw, 4.7rem); }
+      .floating-note { left: -22px; }
+      .about-grid, .approach-grid, .booking-grid, .enquiry-grid { gap: 40px; }
+      .about-grid { grid-template-columns: .9fr 1.1fr; }
+      .support-card { padding: 24px 20px; }
+    }
+    @media (max-width: 720px) {
+      .wrap { width: min(100% - 34px, 540px); }
+      .nav { height: 72px; }
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 71px; left: 0; right: 0; background: rgba(255,253,249,.98); padding: 18px 24px 24px; border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 6px; box-shadow: 0 20px 30px rgba(63,51,34,.07); }
+      .nav-links.open { display: flex; }
+      .nav-links > a:not(.btn) { padding: 11px 4px; font-size: .95rem; }
+      .nav-links .btn { margin-top: 7px; }
+      .hero { padding: 37px 0 62px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-copy { padding-bottom: 0; }
+      h1 { font-size: clamp(3.15rem, 13vw, 5rem); margin-top: 17px; }
+      .hero-copy .intro { font-size: 1rem; }
+      .hero-art { width: min(100%, 440px); margin: 8px auto 16px; }
+      .floating-note { left: -8px; bottom: 8%; }
+      .leaf-one { left: -12px; top: 48%; }
+      .belief-track { justify-content: flex-start; overflow: hidden; gap: 32px; }
+      .belief-item { font-size: 1rem; }
+      section.content-section { padding: 78px 0; }
+      h2 { font-size: clamp(2.4rem, 10vw, 3.4rem); }
+      .about-grid, .approach-grid, .booking-grid, .enquiry-grid { grid-template-columns: 1fr; gap: 34px; }
+      .about-visual { min-height: 340px; }
+      .about-circle { width: min(82%, 330px); }
+      .about-stamp { right: 2%; bottom: 3px; }
+      .support-grid { grid-template-columns: 1fr; }
+      .support-card { min-height: auto; padding: 27px; }
+      .approach-intro, .booking-info { position: static; }
+      .step { grid-template-columns: 48px 1fr; gap: 13px; }
+      .quote-section { padding-bottom: 75px; }
+      .quote-panel { padding: 48px 22px; border-radius: 23px; }
+      .booking-form { padding: 24px 18px; }
+      .form-grid, .enquiry-form { grid-template-columns: 1fr; }
+      .field.full, .enquiry-form .field.full { grid-column: auto; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+      .footer-right { text-align: left; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="Unmind with Me home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M20 31C11 25 8 17 12 10c7 4 11 10 8 21Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M20 31c-1-11 4-19 13-21 2 9-3 17-13 21Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M20 31v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M16 35h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-word">unmind <span>WITH ME</span></span>
+      </a>
+      <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+        <a href="#about">Meet Pavithra</a>
+        <a href="#support">Areas of support</a>
+        <a href="#approach">How it works</a>
+        <a href="#enquire">Enquire</a>
+        <a class="btn btn-primary" href="#booking">Book a session <span class="arrow">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <span class="leaf leaf-one" aria-hidden="true">❧</span>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">A softer place to start</div>
+          <h1>You deserve space to <em>understand</em> yourself.</h1>
+          <p class="intro">A warm, thoughtful space to pause, make sense of what you’re feeling, and find your way forward — one step at a time.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#booking">Book a session <span class="arrow">↗</span></a>
+            <a class="btn btn-secondary" href="#about">Get to know me <span class="arrow">↓</span></a>
+          </div>
+          <div class="micro-note"><span class="dot"></span> Come as you are. Begin at your own pace.</div>
+        </div>
+        <div class="hero-art">
+          <div class="hero-image-frame">
+            <img src="assets/unmind-brand.png" alt="Unmind with Me brand image featuring Pavithra in a warm, calm setting" fetchpriority="high">
+          </div>
+          <div class="floating-note"><strong>A little more understanding. A little more you.</strong><span>There is room for your story here.</span></div>
+          <span class="leaf leaf-two" aria-hidden="true">❧</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="belief" aria-label="Guiding principles">
+      <div class="wrap belief-track">
+        <div class="belief-item">Self-understanding <span>✳</span></div>
+        <div class="belief-item">Emotional wellbeing <span>✳</span></div>
+        <div class="belief-item">Healthy boundaries <span>✳</span></div>
+        <div class="belief-item">Growth at your pace <span>✳</span></div>
+      </div>
+    </div>
+
+    <section class="content-section" id="about">
+      <div class="wrap about-grid">
+        <div class="about-visual reveal">
+          <div class="about-circle" aria-hidden="true">
+            <svg class="about-symbol" viewBox="0 0 300 300" fill="none"><path d="M150 253c-65-36-97-91-75-144 37 18 66 58 75 144Z" stroke="#596348" stroke-width="3"/><path d="M150 253c-5-79 32-141 103-155 14 65-25 126-103 155Z" stroke="#596348" stroke-width="3"/><path d="M150 253v25m-27 0h54" stroke="#596348" stroke-width="3" stroke-linecap="round"/><path d="M150 253c-14-37-5-72 24-101" stroke="#ae7558" stroke-width="3" stroke-linecap="round"/><circle cx="150" cy="150" r="137" stroke="#d5a65f" stroke-width="1.5" stroke-dasharray="2 8"/></svg>
+          </div>
+          <div class="about-stamp"><strong>Unmind with Me</strong><small>A space to be heard</small></div>
+        </div>
+        <div class="about-copy reveal delay-1">
+          <div class="eyebrow">A note from Pavithra</div>
+          <h2>Let’s make room for <em>your story.</em></h2>
+          <p>Hello, I’m Pavithra Jayanthi, a Consultant Psychologist. I believe that understanding yourself can be a meaningful first step towards change — and that you deserve to approach that process with patience and compassion.</p>
+          <p><strong>Unmind with Me</strong> is a welcoming space to explore your thoughts, emotional patterns, self-worth, and boundaries without pressure to have every answer straight away.</p>
+          <p>There is no need to tell your story perfectly. We can begin with what feels important to you, at a pace that feels manageable.</p>
+          <div class="signature"><span class="signature-line"></span><div><strong>Pavithra Jayanthi</strong><span>Consultant Psychologist</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section support" id="support">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <div class="eyebrow">What we can explore</div>
+          <h2>Support for the parts of life that feel <em>heavy.</em></h2>
+          <p>Everyone’s experience is different. These are a few themes you may wish to bring into a conversation.</p>
+        </div>
+        <div class="support-grid">
+          <article class="support-card reveal">
+            <div class="support-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20s-7-4.3-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.7-7 10-7 10Z"/><path d="M8.5 12h2l1.2-2.5 1.6 5 1.2-2.5h1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Emotional wellbeing</h3>
+            <p>Make space for difficult feelings, better understand emotional patterns, and explore what helps you feel grounded.</p>
+          </article>
+          <article class="support-card reveal delay-1">
+            <div class="support-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c.7-4 3-6 7-6s6.3 2 7 6" stroke-linecap="round"/><path d="m17.5 4 .7 1.5 1.7.2-1.2 1.2.3 1.7-1.5-.8-1.5.8.3-1.7-1.2-1.2 1.7-.2.7-1.5Z"/></svg></div>
+            <h3>Self-worth & boundaries</h3>
+            <p>Explore your needs, practise expressing them clearly, and build relationships that make room for mutual respect.</p>
+          </article>
+          <article class="support-card reveal delay-2">
+            <div class="support-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-3.8 7-10V5l-7-2-7 2v6c0 6.2 7 10 7 10Z"/><path d="M8.5 12.5 11 15l4.8-5.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Healing & life changes</h3>
+            <p>Gently explore the impact of past experiences or current transitions, while paying attention to your own pace and needs.</p>
+          </article>
+        </div>
+        <div class="soft-note reveal">The right kind of support depends on your individual circumstances. An initial enquiry is a chance to ask questions and explore whether the service is a suitable fit.</div>
+      </div>
+    </section>
+
+    <section class="content-section" id="approach">
+      <div class="wrap approach-grid">
+        <div class="approach-intro reveal">
+          <div class="eyebrow">No pressure. One step at a time.</div>
+          <h2>A journey that starts with <em>being heard.</em></h2>
+          <p>You don’t have to know exactly what you need before reaching out. We can start with a conversation and take it from there.</p>
+          <a class="btn btn-secondary" href="#enquire">Ask a question <span class="arrow">↗</span></a>
+        </div>
+        <div class="steps">
+          <article class="step reveal"><div class="step-num">01</div><div><h3>Reach out</h3><p>Share a little about what brings you here, or simply ask the questions you have about the process.</p></div></article>
+          <article class="step reveal"><div class="step-num">02</div><div><h3>Understand together</h3><p>If the service feels like a suitable fit, the next step is to discuss what matters to you and what you hope to work towards.</p></div></article>
+          <article class="step reveal"><div class="step-num">03</div><div><h3>Find your next step</h3><p>Explore useful ways forward at a pace that respects your circumstances, preferences, and goals.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section">
+      <div class="wrap">
+        <div class="quote-panel reveal">
+          <div class="quote-mark" aria-hidden="true">“</div>
+          <h2>You don’t need to become someone else to deserve <em>care.</em></h2>
+          <p>You can learn to understand yourself while still being kind to the person you are today.</p>
+          <a href="#booking" class="btn btn-primary">Take the first step <span class="arrow">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section booking" id="booking">
+      <div class="wrap booking-grid">
+        <div class="booking-info reveal">
+          <div class="eyebrow">Make a little space for you</div>
+          <h2>Let’s start with a <em>conversation.</em></h2>
+          <p>Send a session request with your preferred details. Pavithra can follow up to discuss availability and next steps. Your submission is a request, not a confirmed appointment.</p>
+          <div class="detail"><span class="detail-mark">✳</span><span>Share only what you feel comfortable sharing in an initial request.</span></div>
+          <div class="detail"><span class="detail-mark">✳</span><span>Preferred dates and session format are requests and are subject to availability.</span></div>
+          <div class="detail"><span class="detail-mark">✳</span><span>Questions are welcome — you can use the enquiry form if you are not ready to book.</span></div>
+        </div>
+        <form class="booking-form reveal delay-1" action="https://formsubmit.co/positivel071@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New session request — Unmind with Me">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="form_type" value="Session booking request">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <h3>Request a session</h3>
+          <p>Fill in the details below and we’ll take it one step at a time.</p>
+          <div class="form-grid">
+            <div class="field"><label for="book-name">Your name *</label><input id="book-name" name="Name" autocomplete="name" required placeholder="Name"></div>
+            <div class="field"><label for="book-email">Email address *</label><input id="book-email" name="Email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+            <div class="field"><label for="book-phone">Phone / WhatsApp (optional)</label><input id="book-phone" name="Phone or WhatsApp" type="tel" autocomplete="tel" placeholder="Contact number"></div>
+            <div class="field"><label for="book-date">Preferred date (optional)</label><input id="book-date" name="Preferred date" type="date"></div>
+            <div class="field"><label for="book-format">Session preference *</label><select id="book-format" name="Session preference" required><option value="" disabled selected>Choose an option</option><option>Online</option><option>In person — please share availability</option><option>Not sure yet</option></select></div>
+            <div class="field"><label for="book-time">Preferred time (optional)</label><select id="book-time" name="Preferred time"><option value="">No preference</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select></div>
+            <div class="field full"><label for="book-message">What would you like us to know? (optional)</label><textarea id="book-message" name="Message" placeholder="A few words about what you’re looking for — please avoid sharing highly sensitive details here."></textarea></div>
+          </div>
+          <label class="form-foot"><input type="checkbox" name="Consent to be contacted" value="Yes" required><span>I agree to be contacted about this request and understand that submitting this form does not confirm an appointment. *</span></label>
+          <button class="btn btn-primary form-submit" type="submit">Send session request <span class="arrow">↗</span></button>
+          <div class="fine-print">Your request will be emailed to the Unmind with Me contact inbox. Please do not use this form for emergencies.</div>
+        </form>
+      </div>
+    </section>
+
+    <section class="content-section enquiry" id="enquire">
+      <div class="wrap enquiry-grid">
+        <div class="reveal">
+          <div class="eyebrow">Have a question?</div>
+          <h2>It’s okay to <em>ask first.</em></h2>
+          <p>Curious about the process, session format, or whether this may be right for you? Send a note and ask what you need to know before deciding.</p>
+          <p><a class="contact-email" href="mailto:positivel071@gmail.com">positivel071@gmail.com <span aria-hidden="true">↗</span></a></p>
+        </div>
+        <form class="enquiry-form reveal delay-1" action="https://formsubmit.co/positivel071@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New enquiry — Unmind with Me">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="form_type" value="General enquiry">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="field"><label for="enq-name">Your name *</label><input id="enq-name" name="Name" autocomplete="name" required placeholder="Name"></div>
+          <div class="field"><label for="enq-email">Email address *</label><input id="enq-email" name="Email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+          <div class="field full"><label for="enq-topic">What is your question about?</label><select id="enq-topic" name="Enquiry topic"><option>Session availability</option><option>Online or in-person sessions</option><option>Understanding the process</option><option>Other question</option></select></div>
+          <div class="field full"><label for="enq-message">Your message *</label><textarea id="enq-message" name="Message" required placeholder="What would you like to know?"></textarea></div>
+          <label class="form-foot field full"><input type="checkbox" name="Consent to be contacted" value="Yes" required><span>I agree to be contacted about this enquiry. *</span></label>
+          <div class="field full"><button type="submit" class="btn btn-primary form-submit">Send an enquiry <span class="arrow">↗</span></button><span class="fine-print">Please keep your message general and avoid including confidential health details.</span></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-row">
+        <div><div class="footer-brand">unmind <span>WITH ME</span></div><div style="font-size:.78rem;color:var(--muted);margin-top:4px">Pavithra Jayanthi · Consultant Psychologist</div></div>
+        <div class="footer-right"><p>Understand yourself. Make room to grow.</p><p><a href="mailto:positivel071@gmail.com">positivel071@gmail.com</a></p></div>
+      </div>
+      <div class="emergency-note">This website is for general information and enquiries, not emergency or crisis support. If you or someone else is in immediate danger, contact local emergency services or a trusted person who can help now.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+      menuToggle.textContent = open ? '×' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Open navigation menu');
+      menuToggle.textContent = '☰';
+    }));
+
+    // Gentle reveal animation as content enters the viewport.
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('is-visible'));
+    }
+
+    // Prevent selection of past dates for the preferred date field.
+    const dateField = document.getElementById('book-date');
+    const today = new Date();
+    dateField.min = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  </script>
+</body>
+</html>
